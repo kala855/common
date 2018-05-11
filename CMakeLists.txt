@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
 project(common)
 find_package( OpenCV REQUIRED )
+find_package ( CUDA REQUIRED )
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -O3; -gencode
+    -arch=compute_62,code=sm_62)
+add_definitions(-std=c++11)
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-add_executable( common src/common.cpp )
-target_link_libraries( common ${OpenCV_LIBS} )
+cuda_add_executable( common src/common.cpp )
+target_link_libraries( common ${OpenCV_LIBS} nvcaffe_parser nvinfer)

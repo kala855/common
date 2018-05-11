@@ -1,5 +1,11 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <opencv2/opencv.hpp>
+
+#include <cuda_runtime_api.h>
+#include <cudnn.h>
+#include <cublas_v2.h>
+#include "NvCaffeParser.h"
+#include "NvInferPlugin.h"
 
 static const int INPUT_W = 500;
 static const int INPUT_H = 375;
